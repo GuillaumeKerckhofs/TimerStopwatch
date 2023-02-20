@@ -1,6 +1,6 @@
 package states;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.*;
 
@@ -30,8 +30,8 @@ public class TimerTests {
 		
 	    assertEquals(Mode.timer, current.getMode());
 	    assertSame(IdleTimer.Instance(), current);
-	    assertEquals("For the value of timer we ", 0, AbstractTimer.getTimer());
-	    assertEquals("For the value of memTimer we ", 0, AbstractTimer.getMemTimer());
+	    assertEquals( 0, AbstractTimer.getTimer(), "For the value of timer we ");
+	    assertEquals( 0, AbstractTimer.getMemTimer(), "For the value of memTimer we ");
 	}
 	
 	@Test
