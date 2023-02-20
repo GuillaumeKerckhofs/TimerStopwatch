@@ -1,9 +1,12 @@
 package gui;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import states.timer.*;
 
 import org.junit.*;
+import org.junit.jupiter.api.Test;
 
 public class TestTimerLabels extends TestGUIAbstract {
 
@@ -11,45 +14,45 @@ public class TestTimerLabels extends TestGUIAbstract {
 	public void testIdleTimerLabels() {
 		c.currentState = IdleTimer.Instance();
 		g.updateUI(c);
-		assertEquals("button 1 for state IdleTimer ", g.b1.getText(),c.getLeftText());
-		assertEquals("button 2 for state IdleTimer ", g.b2.getText(),c.getUpText());
-		assertEquals("button 3 for state IdleTimer ", g.b3.getText(),c.getRightText());
+		assertEquals( g.b1.getText(),c.getLeftText(), "button 1 for state IdleTimer ");
+		assertEquals( g.b2.getText(),c.getUpText(),"button 2 for state IdleTimer ");
+		assertEquals( g.b3.getText(),c.getRightText(), "button 3 for state IdleTimer ");
 	}
 	
 	@Test
 	public void testPausedTimerLabels() {
 		c.currentState = PausedTimer.Instance();
 		g.updateUI(c);
-		assertEquals("button 1 for state PausedTimer ", g.b1.getText(),c.getLeftText());
-		assertEquals("button 2 for state IdleTimer ", g.b2.getText(),c.getUpText());
-		assertEquals("button 3 for state IdleTimer ", g.b3.getText(),c.getRightText());
+		assertEquals( g.b1.getText(),c.getLeftText(),"button 1 for state PausedTimer ");
+		assertEquals( g.b2.getText(),c.getUpText(), "button 2 for state IdleTimer ");
+		assertEquals( g.b3.getText(),c.getRightText(), "button 3 for state IdleTimer ");
 	}
 	
 	@Test
 	public void testRingingTimerLabels() {
 		c.currentState = RingingTimer.Instance();
 		g.updateUI(c);
-		assertEquals("button 1 for state RingingTimer ", g.b1.getText(),c.getLeftText());
-		assertEquals("button 2 for state RingingTimer ", g.b2.getText(),c.getUpText());
-		assertEquals("button 3 for state RingingTimer ", g.b3.getText(),c.getRightText());
+		assertEquals( g.b1.getText(),c.getLeftText(), "button 1 for state RingingTimer ");
+		assertEquals( g.b2.getText(),c.getUpText(), "button 2 for state RingingTimer ");
+		assertEquals( g.b3.getText(),c.getRightText(), "button 3 for state RingingTimer ");
 	}
 	
 	@Test
 	public void testRunningTimerLabels() {
 		c.currentState = RunningTimer.Instance();
 		g.updateUI(c);
-		assertEquals("button 1 for state RunningTimer ", g.b1.getText(),c.getLeftText());
-		assertEquals("button 2 for state RunningTimer ", g.b2.getText(),c.getUpText());
-		assertEquals("button 3 for state RunningTimer ", g.b3.getText(),c.getRightText());
+		assertEquals( g.b1.getText(),c.getLeftText(), "button 1 for state RunningTimer ");
+		assertEquals( g.b2.getText(),c.getUpText(), "button 2 for state RunningTimer ");
+		assertEquals( g.b3.getText(),c.getRightText(), "button 3 for state RunningTimer ");
 	}
 	
 	@Test
 	public void testSetTimerLabels() {
 		c.currentState = SetTimer.Instance();
 		g.updateUI(c);
-		assertEquals("button 1 for state SetTimer ", g.b1.getText(),c.getLeftText());
-		assertEquals("button 2 for state SetTimer ", g.b2.getText(),c.getUpText());
-		assertEquals("button 3 for state SetTimer ", g.b3.getText(),c.getRightText());
+		assertEquals( g.b1.getText(),c.getLeftText(), "button 1 for state SetTimer ");
+		assertEquals( g.b2.getText(),c.getUpText(), "button 2 for state SetTimer ");
+		assertEquals( g.b3.getText(),c.getRightText(), "button 3 for state SetTimer ");
 	}
 	
 	   @Test

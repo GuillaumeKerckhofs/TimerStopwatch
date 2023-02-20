@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.*;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import states.timer.*;
 import states.stopwatch.AbstractStopwatch;
 
@@ -12,7 +14,7 @@ public class TimerTests {
 	private static Context context;
 	private ClockState current;
 
-	@Before
+	@BeforeEach
 	public void setup() {
         context = new Context(); // create the state machine context
         AbstractTimer.resetInitialValues();

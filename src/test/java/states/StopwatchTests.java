@@ -1,12 +1,10 @@
 package states;
 
-import states.ClockState;
-import states.Context;
-import states.Mode;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import states.stopwatch.AbstractStopwatch;
 import states.stopwatch.ResetStopwatch;
 import states.timer.AbstractTimer;
-import org.junit.*;
 
 import static org.junit.Assert.*;
 
@@ -15,7 +13,7 @@ public class StopwatchTests {
 	private static Context context;
 	private ClockState current;
 
-	@Before
+	@BeforeEach
 	public void setup() {
         context = new Context(); // create the state machine context
         AbstractStopwatch.resetInitialValues();

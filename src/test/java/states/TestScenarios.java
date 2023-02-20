@@ -1,10 +1,10 @@
 package states;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
 
-import static org.junit.Assert.*;
-import states.Context;
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 import states.stopwatch.*;
 import states.timer.*;
 
@@ -12,8 +12,8 @@ public class TestScenarios {
 
 	Context c;
 	
-    @Before
-    public void setup() {
+    @BeforeEach
+    void setup() {
     	c = new Context();
      	//before each test, reset the timer values to avoid interference between tests:
     	AbstractTimer.resetInitialValues();
@@ -42,35 +42,35 @@ public class TestScenarios {
 	  assertEquals(0,AbstractTimer.getTimer());
 	  
 	  c.up(); // start running the timer
-	  assertEquals("value of timer ", 2, AbstractTimer.getTimer());
+	  assertEquals( 2, AbstractTimer.getTimer(), "value of timer ");
 	  c.tick();
-	  assertEquals("value of memTimer ", 2, AbstractTimer.getMemTimer());
-	  assertEquals("value of timer ", 1, AbstractTimer.getTimer());
+	  assertEquals( 2, AbstractTimer.getMemTimer(),"value of memTimer ");
+	  assertEquals( 1, AbstractTimer.getTimer(), "value of timer ");
 	  
 	  
 	  c.up(); // pause the timer
 	  c.tick();
 	  assertSame(PausedTimer.Instance(), c.currentState);
-	  assertEquals("value of memTimer ", 2, AbstractTimer.getMemTimer());
-	  assertEquals("value of timer ", 1, AbstractTimer.getTimer());
+	  assertEquals( 2, AbstractTimer.getMemTimer(), "value of memTimer ");
+	  assertEquals( 1, AbstractTimer.getTimer(), "value of timer ");
 	  
 	  c.left(); // go to stopwatch mode
 	  c.tick();
 	  assertSame(ResetStopwatch.Instance(), c.currentState);
-	  assertEquals("value of totalTime ", 0, AbstractStopwatch.getTotalTime());
-	  assertEquals("value of lapTime ", 0, AbstractStopwatch.getLapTime());
+	  assertEquals( 0, AbstractStopwatch.getTotalTime(), "value of totalTime ");
+	  assertEquals( 0, AbstractStopwatch.getLapTime(), "value of lapTime ");
 	  
 	  c.up(); //start running the stopwatch
 	  c.tick();
 	  assertSame(RunningStopwatch.Instance(), c.currentState);
-	  assertEquals("value of totalTime ", 1, AbstractStopwatch.getTotalTime());
-	  assertEquals("value of lapTime ", 0, AbstractStopwatch.getLapTime());
+	  assertEquals( 1, AbstractStopwatch.getTotalTime(), "value of totalTime ");
+	  assertEquals( 0, AbstractStopwatch.getLapTime(), "value of lapTime ");
 	 
 	  c.up(); // record stopwatch laptime
 	  c.tick();
 	  assertSame(LaptimeStopwatch.Instance(), c.currentState);
-	  assertEquals("value of totalTime ", 2, AbstractStopwatch.getTotalTime());
-	  assertEquals("value of lapTime ", 1, AbstractStopwatch.getLapTime());
+	  assertEquals( 2, AbstractStopwatch.getTotalTime(), "value of totalTime ");
+	  assertEquals( 1, AbstractStopwatch.getLapTime(), "value of lapTime ");
 	  assertEquals("unsplit",c.getUpText());
 	  assertEquals("lapTime = 1",c.getDisplayText());
 
@@ -86,22 +86,22 @@ public class TestScenarios {
 	  c.left(); // go back to timer mode (remembering history state)
 	  c.tick();
 	  assertSame(PausedTimer.Instance(), c.currentState);
-	  assertEquals("value of memTimer ", 2, AbstractTimer.getMemTimer());
-	  assertEquals("value of timer ", 1, AbstractTimer.getTimer());	 
+	  assertEquals( 2, AbstractTimer.getMemTimer(), "value of memTimer ");
+	  assertEquals( 1, AbstractTimer.getTimer(),"value of timer ");
 	  
 	  c.up(); // continue running timer
 	  assertSame(RunningTimer.Instance(), c.currentState);
 	  c.tick();
 	  //automatic switch to ringing timer since timer has reached 0...
 	  assertSame(RingingTimer.Instance(), c.currentState);
-	  assertEquals("value of memTimer ", 2, AbstractTimer.getMemTimer());
-	  assertEquals("value of timer ", 0, AbstractTimer.getTimer());	 
+	  assertEquals( 2, AbstractTimer.getMemTimer(), "value of memTimer ");
+	  assertEquals( 0, AbstractTimer.getTimer(), "value of timer ");
 	  
 	  c.right(); // return to idle timer state
 	  c.tick();
 	  assertSame(IdleTimer.Instance(), c.currentState);
-	  assertEquals("value of memTimer ", 2, AbstractTimer.getMemTimer());
-	  assertEquals("value of timer ", 0, AbstractTimer.getTimer());
+	  assertEquals( 2, AbstractTimer.getMemTimer(), "value of memTimer ");
+	  assertEquals( 0, AbstractTimer.getTimer(), "value of timer ");
 
 	  }
 
