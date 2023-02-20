@@ -5,12 +5,10 @@ import states.EventListener;
 
 public abstract class AbstractGUI {
 
-    protected EventListener observer;
+    protected final EventListener observer;
     
     public AbstractGUI(EventListener o) {
     	observer = o;
-    	initGUI();
-    	addEventListener();
     	}
     
     protected abstract void initGUI();

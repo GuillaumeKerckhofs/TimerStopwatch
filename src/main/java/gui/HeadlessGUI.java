@@ -19,10 +19,14 @@ public class HeadlessGUI extends AbstractGUI {
     public JButton b1, b2, b3;
     public JLabel myText1, myText2, myText3;
 
-    public HeadlessGUI(EventListener o) { super(o); }
+    public HeadlessGUI(EventListener o) {
+        super(o);
+        initGUI();
+        addEventListener();
+    }
     
     protected void initGUI() {
-        //Notice that we initialise three buttons and three labels but we never display them.
+        //Notice that we initialise three buttons and three labels, but we never display them.
         b1 = new JButton();
         b2 = new JButton();
         b3 = new JButton();
