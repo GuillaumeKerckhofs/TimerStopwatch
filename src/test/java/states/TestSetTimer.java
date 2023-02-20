@@ -7,7 +7,7 @@ import states.timer.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class setTimerTest {
+public class TestSetTimer {
 
     private Context context;
 
