@@ -62,6 +62,7 @@ public class IdleTest {
 		assertSame(SetTimer.Instance(), context.currentState.right());
 	}
 
+	@Test
 	@Disabled
 	public void testLeft() {		
 		/* we cannot test the effect of the left() event here,
